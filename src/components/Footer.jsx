@@ -101,7 +101,7 @@ export default function FooterCom() {
                   href="https://geopolitiksimplified.onrender.com/"
                   className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-purple-400 transition-colors duration-200 text-base"
                 >
-                  Geopolical Blogs
+                  Geopolitical Blogs
                 </Footer.Link>
                 <Footer.Link
                   href="/newsletter"

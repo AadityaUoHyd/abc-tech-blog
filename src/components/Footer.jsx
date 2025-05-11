@@ -15,7 +15,7 @@ export default function FooterCom() {
               to="/"
               className="self-center whitespace-nowrap text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white hover:scale-105 transition-transform duration-200"
             >
-              <span className="px-4 py-2 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-xl hover:scale-105 text-white shadow-xl">
+              <span className="px-4 py-2 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-xl text-white shadow-xl">
                 ABC TECH BLOG
               </span>
             </Link>
@@ -155,7 +155,7 @@ export default function FooterCom() {
         <div className="w-full sm:flex sm:items-center sm:justify-between">
           <Footer.Copyright
             href="/"
-            by="ABC TECH BLOG"
+            by="ABC TECH BLOG. All Rights Reserve."
             year={new Date().getFullYear()}
             className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-purple-400 transition-colors duration-200"
           />

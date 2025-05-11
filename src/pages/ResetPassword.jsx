@@ -34,6 +34,7 @@ function ResetPassword() {
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/reset-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', 
         body: JSON.stringify({ token, password: formData.password }),
       });
       const data = await res.json();

@@ -155,7 +155,7 @@ export default function FooterCom() {
         <div className="w-full sm:flex sm:items-center sm:justify-between">
           <Footer.Copyright
             href="/"
-            by="ABC TECH BLOG. All Rights Reserve."
+            by="ABC TECH BLOG. All Rights Reserved."
             year={new Date().getFullYear()}
             className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-purple-400 transition-colors duration-200"
           />

@@ -19,6 +19,7 @@ function VerifyEmail() {
       fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/verify-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', 
         body: JSON.stringify({ token }),
       })
         .then((res) => res.json())
@@ -50,6 +51,7 @@ function VerifyEmail() {
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/resend-verification`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ email }),
       });
       const data = await res.json();

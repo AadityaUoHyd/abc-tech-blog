@@ -99,9 +99,9 @@ export default function DashSidebar() {
                 </Sidebar.Item>
               </Link>
 
-              <Link to={'/create'}>
+              <Link to={'/create-post'}>
                 <Sidebar.Item
-                  active={tab === 'create'}
+                  active={tab === 'create-post'}
                   icon={HiOutlinePencilAlt}
                   as='div'
                 >

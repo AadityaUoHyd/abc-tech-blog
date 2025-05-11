@@ -22,7 +22,7 @@ export default function Home() {
       try {
         setLoading(true);
         setError(null);
-        const res = await fetch('/api/post/getPosts?limit=9&sort=createdAt&order=desc');
+        const res = await fetch('/api/post/getposts?limit=9&sort=createdAt&order=desc');
         const data = await res.json();
         if (!res.ok) {
           throw new Error(data.message || 'Failed to fetch posts');

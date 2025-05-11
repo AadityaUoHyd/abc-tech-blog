@@ -212,7 +212,7 @@ export default function PostPage() {
 
       </div>
         {/* Recent Articles Section */}
-      <div className='px-6 sm:px-8 py-8 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 rounded-xl mx-4 sm:mx-8 mb-8'>
+      <div className='mt-6 px-6 sm:px-8 py-8 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 rounded-xl mx-4 sm:mx-8 mb-8'>
           <h2 className='text-2xl sm:text-3xl font-bold text-center text-gray-800 dark:text-white mb-6'>
             Explore More Articles
           </h2>

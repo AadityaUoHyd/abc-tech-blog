@@ -22,12 +22,12 @@ export default function Home() {
       try {
         setLoading(true);
         setError(null);
-        const res = await fetch('/api/post/getposts?limit=9&sort=createdAt&order=desc');
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/post/getposts?limit=9&sort=createdAt&order=desc`);
         const data = await res.json();
         if (!res.ok) {
           throw new Error(data.message || 'Failed to fetch posts');
         }
-        setPosts(data.posts.slice(0, 9)); // Ensure max 9 posts
+        setPosts(data.posts.slice(0, 9));
       } catch (err) {
         setError(err.message);
       } finally {
@@ -36,7 +36,6 @@ export default function Home() {
     };
     fetchPosts();
 
-    // Auto-slide every 5 seconds
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroImages.length);
     }, 5000);

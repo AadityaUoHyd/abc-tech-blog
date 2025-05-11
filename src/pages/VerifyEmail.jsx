@@ -13,11 +13,10 @@ function VerifyEmail() {
   const [searchParams] = useSearchParams();
   const token = searchParams.get('token');
 
-  // Handle verification on page load
   useEffect(() => {
     if (token) {
       setVerifyLoading(true);
-      fetch('/api/auth/verify-email', {
+      fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/verify-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token }),
@@ -48,7 +47,7 @@ function VerifyEmail() {
     }
     setLoading(true);
     try {
-      const res = await fetch('/api/auth/resend-verification', {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/resend-verification`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),

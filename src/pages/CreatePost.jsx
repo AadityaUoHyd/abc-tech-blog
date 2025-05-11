@@ -66,7 +66,7 @@ export default function CreatePost() {
         ...formData,
         image: formData.image || 'https://res.cloudinary.com/ddgkgaffw/image/upload/v1746758347/default-image_vxqxhk.png',
       };
-      const res = await fetch('/api/post/create', {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/post/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

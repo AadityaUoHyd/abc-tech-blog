@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
     server: {
       proxy: {
         '/api': {
-          target: env.VITE_BACKEND_URL || 'http://localhost:3000',
+          target: env.VITE_BACKEND_URL || 'http://localhost:3000' || 'https://abc-tech-blog-backend.vercel.app',
           secure: false, // Safe for dev and compatible with production
           changeOrigin: true,
         },

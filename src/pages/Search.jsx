@@ -38,7 +38,7 @@ export default function Search() {
     const fetchPosts = async () => {
       setLoading(true);
       const searchQuery = urlParams.toString();
-      const res = await fetch(`/api/post/getposts?${searchQuery}&limit=${postsPerPage}`);
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/post/getposts?${searchQuery}&limit=${postsPerPage}`);
       if (!res.ok) {
         setLoading(false);
         return;

@@ -15,7 +15,6 @@ function AuthPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Sync activeTab with URL query parameter
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const tab = params.get('tab');
@@ -29,7 +28,6 @@ function AuthPage() {
     };
   }, [location.search, dispatch]);
 
-  // Show toast for errors
   useEffect(() => {
     if (errorMessage) {
       toast.error(errorMessage, { position: 'top-right', toastId: errorMessage });
@@ -56,7 +54,7 @@ function AuthPage() {
     }
     try {
       dispatch(signInStart());
-      const res = await fetch('/api/auth/signin', {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signin`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -86,7 +84,7 @@ function AuthPage() {
     }
     try {
       dispatch(signInStart());
-      const res = await fetch('/api/auth/signup', {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -98,7 +96,7 @@ function AuthPage() {
         return;
       }
       if (res.ok) {
-        dispatch(signInFailure(null)); // Reset loading state
+        dispatch(signInFailure(null));
         toast.success('Signed up successfully! Please verify your email.', { position: 'top-right', toastId: 'signup-success' });
         navigate('/verify-email');
       }

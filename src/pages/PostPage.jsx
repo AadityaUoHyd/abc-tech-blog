@@ -212,8 +212,8 @@ export default function PostPage() {
 
       </div>
         {/* Recent Articles Section */}
-      <div className='mt-10 px-6 sm:px-8 py-8 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 rounded-xl mx-4 sm:mx-8 mb-8'>
-          <h2 className='text-2xl sm:text-3xl font-bold text-center text-gray-800 dark:text-white mb-4'>
+      <div className='mt-10 px-6 sm:px-8 py-8 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-black dark:to-gray-700 rounded-xl mx-4 sm:mx-8 mb-8'>
+          <h2 className='text-2xl sm:text-3xl font-bold text-center text-gray-800 dark:text-white mb-8'>
             Explore More Articles
           </h2>
           <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>

@@ -93,14 +93,14 @@ export default function PostPage() {
       <div className='max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden'>
         {/* Header Section */}
         <header className='p-6 sm:p-8'>
-          <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold font-serif  mb-4 leading-tight tracking-tight border-b-2 border-gradient-to-r pb-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-xl text-white'>
+          <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold font-serif p-2 mb-4 leading-tight tracking-tight border-b-2 border-gradient-to-r pb-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-xl text-white'>
             {post && post.title}
           </h1>
           <div
             className="flex flex-col sm:flex-row justify-between mx-auto zw-full text-sm text-gray-600 dark:text-gray-400 border-b-2 border-gradient-to-r from-indigo-500 to-purple-500 pb-4"
           >
             <span className="w-full sm:w-auto">
-              created on :{" "}
+              published:{" "}
               {post && new Date(post.createdAt).toLocaleDateString()}
             </span>
 
@@ -212,8 +212,8 @@ export default function PostPage() {
 
       </div>
         {/* Recent Articles Section */}
-      <div className='mt-6 px-6 sm:px-8 py-8 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 rounded-xl mx-4 sm:mx-8 mb-8'>
-          <h2 className='text-2xl sm:text-3xl font-bold text-center text-gray-800 dark:text-white mb-6'>
+      <div className='mt-10 px-6 sm:px-8 py-8 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 rounded-xl mx-4 sm:mx-8 mb-8'>
+          <h2 className='text-2xl sm:text-3xl font-bold text-center text-gray-800 dark:text-white mb-4'>
             Explore More Articles
           </h2>
           <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>

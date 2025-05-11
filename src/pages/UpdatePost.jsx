@@ -101,7 +101,7 @@ export default function UpdatePost() {
 
       if (res.ok) {
         setPublishError(null);
-        navigate(`/post/${data.slug}`);
+        navigate(`${import.meta.env.VITE_BACKEND_URL}/post/${data.slug}`);
       }
     } catch (error) {
       setPublishError('Something went wrong');

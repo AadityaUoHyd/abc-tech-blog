@@ -93,7 +93,7 @@ export default function PostPage() {
       <div className='max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden'>
         {/* Header Section */}
         <header className='p-6 sm:p-8'>
-          <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold font-serif text-gray-900 dark:text-white mb-4 leading-tight tracking-tight border-b-2 border-gradient-to-r from-indigo-500 to-purple-500 pb-4'>
+          <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold font-serif  mb-4 leading-tight tracking-tight border-b-2 border-gradient-to-r pb-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-xl text-white'>
             {post && post.title}
           </h1>
           <div

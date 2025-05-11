@@ -26,6 +26,32 @@ export default function FooterCom() {
               Connect for Freelancing - <span className='text:black dark:text-white hover:text-blue-500 dark:hover:text-blue-500 hover:underline dark:hover:underline'><a href="https://www.linkedin.com/in/aaditya-bachchu-chatterjee-0485933b/">Aaditya B Chatterjee</a>.</span>
             </p>
           </div>
+
+          <div className="flex flex-col items-center justify-center text-center bg-gray-50 dark:bg-gray-800 p-2 rounded-xl shadow-md">
+            <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+              Fuel My Coffee
+            </h4>
+            <img
+              src="https://res.cloudinary.com/ddgkgaffw/image/upload/v1746921297/bmc_qr_v8v4ay.png"
+              alt="Buy Me a Coffee QR"
+              className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-md shadow-lg transition-transform duration-300 hover:scale-105"
+            />
+            <div className="mt-2 text-sm text-gray-600 dark:text-gray-400 max-w-xs">
+              Appreciate my content? <p>Scan the code, or<br/>
+              <a 
+                href="https://buymeacoffee.com/aadiraj48" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="ml-1 text-indigo-600 dark:text-purple-400 hover:underline"
+              >
+                buy me a coffee
+              </a>
+              .
+              </p>
+            </div>
+          </div>
+
+
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-12 mt-8 sm:mt-0">
             <div>
               <Footer.Title

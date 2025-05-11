@@ -71,6 +71,7 @@ export default function CreatePost() {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify(updatedFormData),
       });
       const data = await res.json();
@@ -81,7 +82,7 @@ export default function CreatePost() {
 
       if (res.ok) {
         setPublishError(null);
-        navigate(`${import.meta.env.VITE_BACKEND_URL}/post/${data.slug}`);
+        navigate(`/post/${data.slug}`);
       }
     } catch (error) {
       setPublishError('Something went wrong');

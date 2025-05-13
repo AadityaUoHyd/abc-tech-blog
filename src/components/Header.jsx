@@ -60,23 +60,27 @@ export default function Header() {
         </span>
       </Link>
       
-      <form onSubmit={handleSubmit} className="flex items-center gap-3 w-full px-2 sm:max-w-md">
-        <TextInput
-          type="text"
-          placeholder="Search articles by title..."
-          rightIcon={AiOutlineSearch}
-          className="flex-1 rounded-full bg-gray-100 dark:bg-gray-800 border-2 border-indigo-300 dark:border-purple-500 focus:ring-4 focus:ring-indigo-500 dark:focus:ring-purple-500 text-lg py-3 pl-5 pr-12 shadow-sm dark:shadow-none transition-all duration-300"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <Button
-          type="submit"
-          className="lg:hidden w-12 h-12 flex items-center justify-center rounded-full bg-indigo-500 hover:bg-indigo-600 text-white transition duration-200"
-          pill
-        >
-          <AiOutlineSearch className="text-xl" />
-        </Button>
-      </form>
+<form 
+  onSubmit={handleSubmit} 
+  className="flex items-center w-full gap-3 px-2 sm:max-w-md"
+>
+  <TextInput
+    type="text"
+    placeholder="Search articles by title..."
+    rightIcon={AiOutlineSearch}
+    className="flex-1 rounded-full bg-gray-100 dark:bg-gray-800 border border-indigo-300 dark:border-purple-500 focus:ring-2 focus:ring-indigo-500 dark:focus:ring-purple-500 text-base py-2.5 pl-5 pr-12 shadow-sm transition-all duration-300"
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+  />
+  <Button
+    type="submit"
+    className="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-500 hover:bg-indigo-600 text-white transition duration-200 lg:hidden"
+    pill
+  >
+    <AiOutlineSearch className="text-xl" />
+  </Button>
+</form>
+
       <div className='flex gap-3 md:order-2 items-center'>
         <Button
           className='w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200'

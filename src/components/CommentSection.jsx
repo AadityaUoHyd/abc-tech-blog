@@ -15,66 +15,61 @@ export default function CommentSection({ postId }) {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (comment.length > 200) {
-      setCommentError('Comment must be 200 characters or less');
+  e.preventDefault();
+  if (comment.length > 200) {
+    setCommentError('Comment must be 200 characters or less');
+    return;
+  }
+  if (!comment.trim()) {
+    setCommentError('Comment cannot be empty');
+    return;
+  }
+  try {
+    console.log('CommentSection: Submitting comment for user:', currentUser._id, 'postId:', postId); // Log IDs
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/comment/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        content: comment,
+        postId,
+        userId: currentUser._id,
+      }),
+    });
+    const data = await res.json();
+    if (res.status === 401) {
+      navigate('/sign-in');
       return;
     }
-    if (!comment.trim()) {
-      setCommentError('Comment cannot be empty');
+    if (!res.ok) {
+      setCommentError(data.message || 'Failed to create comment');
       return;
     }
-    try {
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/comment/create`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({
-          content: comment,
-          postId,
-          userId: currentUser._id,
-        }),
-      });
-      const data = await res.json();
-      if (res.status === 401) {
-        navigate('/sign-in');
-        return;
-      }
-      if (!res.ok) {
-        setCommentError(data.message || 'Failed to create comment');
-        return;
-      }
-      setComment('');
-      setCommentError(null);
-      setComments([data, ...comments]);
-    } catch (error) {
-      setCommentError('An error occurred while creating the comment');
-      console.error('Comment creation error:', error);
-    }
-  };
+    setComment('');
+    setCommentError(null);
+    setComments([data, ...comments]);
+  } catch (error) {
+    setCommentError('An error occurred while creating the comment');
+    console.error('CommentSection error:', error.message);
+  }
+};
 
   useEffect(() => {
     const getComments = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/comment/getPostComments/${postId}`, {
-          credentials: 'include', // Add for consistency
-        });
-        if (res.status === 401) {
-          navigate('/sign-in');
-          return;
-        }
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/comment/getPostComments/${postId}`);
         if (res.ok) {
           const data = await res.json();
           setComments(data);
         }
       } catch (error) {
-        console.error('Get comments error:', error.message);
+        console.log(error.message);
       }
     };
     getComments();
-  }, [postId, navigate]);
+  }, [postId]);
 
   const handleLike = async (commentId) => {
     try {
@@ -86,10 +81,6 @@ export default function CommentSection({ postId }) {
         method: 'PUT',
         credentials: 'include',
       });
-      if (res.status === 401) {
-        navigate('/sign-in');
-        return;
-      }
       if (res.ok) {
         const data = await res.json();
         setComments(
@@ -105,7 +96,7 @@ export default function CommentSection({ postId }) {
         );
       }
     } catch (error) {
-      console.error('Like comment error:', error.message);
+      console.log(error.message);
     }
   };
 
@@ -128,18 +119,14 @@ export default function CommentSection({ postId }) {
         method: 'DELETE',
         credentials: 'include',
       });
-      if (res.status === 401) {
-        navigate('/sign-in');
-        return;
-      }
       if (res.ok) {
+        const data = await res.json();
         setComments(comments.filter((comment) => comment._id !== commentId));
       }
     } catch (error) {
-      console.error('Delete comment error:', error.message);
+      console.log(error.message);
     }
   };
-
   return (
     <div className='max-w-2xl mx-auto w-full p-3'>
       {currentUser ? (

@@ -35,7 +35,9 @@ export default function DashUsers() {
   const handleShowMore = async () => {
     const startIndex = users.length;
     try {
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/getusers?startIndex=${startIndex}`);
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/getusers?startIndex=${startIndex}`,{
+        credentials: 'include',
+      });
       const data = await res.json();
       if (res.ok) {
         setUsers((prev) => [...prev, ...data.users]);
@@ -52,6 +54,7 @@ export default function DashUsers() {
     try {
         const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/delete/${userIdToDelete}`, {
             method: 'DELETE',
+            credentials: 'include',
         });
         const data = await res.json();
         if (res.ok) {

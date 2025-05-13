@@ -23,7 +23,9 @@ export default function DashboardComp() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/getusers?limit=5`);
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/getusers?limit=5`, {
+          credentials: 'include',
+        });
         const data = await res.json();
         if (res.ok) {
           setUsers(data.users);

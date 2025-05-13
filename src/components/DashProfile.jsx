@@ -21,7 +21,7 @@ import {
 } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function DashProfile() {
   const { currentUser, error, loading } = useSelector((state) => state.user);
@@ -50,16 +50,7 @@ export default function DashProfile() {
   }, [imageFile]);
 
   const uploadImage = async () => {
-    // service firebase.storage {
-    //   match /b/{bucket}/o {
-    //     match /{allPaths=**} {
-    //       allow read;
-    //       allow write: if
-    //       request.resource.size < 2 * 1024 * 1024 &&
-    //       request.resource.contentType.matches('image/.*')
-    //     }
-    //   }
-    // }
+
     setImageFileUploading(true);
     setImageFileUploadError(null);
     const storage = getStorage(app);
@@ -75,9 +66,7 @@ export default function DashProfile() {
         setImageFileUploadProgress(progress.toFixed(0));
       },
       (error) => {
-        setImageFileUploadError(
-          'Could not upload image (File must be less than 2MB)'
-        );
+        toast.error('Could not upload image (File must be less than 2MB)', { position: 'top-right', toastId: 'image-upload-error' });
         setImageFileUploadProgress(null);
         setImageFile(null);
         setImageFileUrl(null);
@@ -106,7 +95,7 @@ export default function DashProfile() {
       return;
     }
     if (imageFileUploading) {
-      setUpdateUserError('Please wait for image to upload');
+      toast.error('Please wait for image to upload', { position: 'top-right', toastId: 'image-upload-wait' });
       return;
     }
     try {
@@ -125,7 +114,7 @@ export default function DashProfile() {
         setUpdateUserError(data.message);
       } else {
         dispatch(updateSuccess(data));
-        setUpdateUserSuccess("User's profile updated successfully");
+        toast.success("User's profile updated successfully", { position: 'top-right', toastId: 'profile-update-success' });
       }
     } catch (error) {
       dispatch(updateFailure(error.message));

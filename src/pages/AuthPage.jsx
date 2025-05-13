@@ -149,6 +149,7 @@ function AuthPage() {
                   placeholder="**********"
                   id="password"
                   onChange={handleChange}
+                  autocomplete="current-password"
                   value={formData.password || ''}
                   className="mt-1"
                 />
@@ -224,6 +225,7 @@ function AuthPage() {
                   placeholder="Password"
                   id="password"
                   onChange={handleChange}
+                  autocomplete="current-password"
                   value={formData.password || ''}
                   className="mt-1"
                 />

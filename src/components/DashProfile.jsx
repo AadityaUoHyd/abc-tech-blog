@@ -21,8 +21,8 @@ import {
 } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function DashProfile() {
   const { currentUser, error, loading } = useSelector((state) => state.user);
@@ -51,7 +51,16 @@ export default function DashProfile() {
   }, [imageFile]);
 
   const uploadImage = async () => {
-
+    // service firebase.storage {
+    //   match /b/{bucket}/o {
+    //     match /{allPaths=**} {
+    //       allow read;
+    //       allow write: if
+    //       request.resource.size < 2 * 1024 * 1024 &&
+    //       request.resource.contentType.matches('image/.*')
+    //     }
+    //   }
+    // }
     setImageFileUploading(true);
     setImageFileUploadError(null);
     const storage = getStorage(app);
@@ -92,7 +101,11 @@ export default function DashProfile() {
     setUpdateUserError(null);
     setUpdateUserSuccess(null);
     if (Object.keys(formData).length === 0) {
-      setUpdateUserError('No changes made');
+      toast.error('No changes made', { position: 'top-right', toastId: 'no-changes' });
+      return;
+    }
+    if ('username' in formData && !formData.username.trim()) {
+      toast.error('First name cannot be empty', { position: 'top-right', toastId: 'empty-username-update' });
       return;
     }
     if (imageFileUploading) {
@@ -112,14 +125,14 @@ export default function DashProfile() {
       const data = await res.json();
       if (!res.ok) {
         dispatch(updateFailure(data.message));
-        setUpdateUserError(data.message);
+        toast.error(data.message, { position: 'top-right', toastId: 'update-failure' });
       } else {
         dispatch(updateSuccess(data));
         toast.success("User's profile updated successfully", { position: 'top-right', toastId: 'profile-update-success' });
       }
     } catch (error) {
       dispatch(updateFailure(error.message));
-      setUpdateUserError(error.message);
+      toast.error(error.message, { position: 'top-right', toastId: 'update-error' });
     }
   };
   const handleDeleteUser = async () => {
@@ -209,7 +222,7 @@ export default function DashProfile() {
         <TextInput
           type='text'
           id='username'
-          placeholder='first name'
+          placeholder='username'
           defaultValue={currentUser.username}
           onChange={handleChange}
         />
@@ -284,20 +297,6 @@ export default function DashProfile() {
           </div>
         </Modal.Body>
       </Modal>
-
-      <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme={document.documentElement.classList.contains('dark') ? 'dark' : 'light'}
-        />
-
     </div>
   );
 }

@@ -83,6 +83,18 @@ function AuthPage() {
       toast.error('Please fill out all fields', { position: 'top-right', toastId: 'missing-fields-signup' });
       return;
     }
+    if (!formData.username.trim()) {
+      toast.error('First name cannot be empty', { position: 'top-right', toastId: 'empty-username-signup' });
+      return;
+    }
+    if (formData.password.length < 8) {
+      toast.error('Password must be at least 8 characters long', { position: 'top-right', toastId: 'short-password-signup' });
+      return;
+    }
+    if (!/[!@#$%^&*]/.test(formData.password)) {
+      toast.error('Password must contain at least one special character (e.g., !@#$%^&*)', { position: 'top-right', toastId: 'no-special-char-signup' });
+      return;
+    }
     try {
       dispatch(signInStart());
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signup`, {
@@ -205,6 +217,7 @@ function AuthPage() {
                   onChange={handleChange}
                   value={formData.username || ''}
                   className="mt-1"
+                  autocomplete="current-username"
                 />
               </div>
               <div>
@@ -216,6 +229,7 @@ function AuthPage() {
                   onChange={handleChange}
                   value={formData.email || ''}
                   className="mt-1"
+                  autocomplete="current-email"
                 />
               </div>
               <div>

@@ -208,7 +208,7 @@ export default function DashProfile() {
         <TextInput
           type='text'
           id='username'
-          placeholder='username'
+          placeholder='first name'
           defaultValue={currentUser.username}
           onChange={handleChange}
         />

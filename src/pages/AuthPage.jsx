@@ -197,10 +197,10 @@ function AuthPage() {
           <div>
             <form className="space-y-6" onSubmit={handleSignUp}>
               <div>
-                <Label value="Your full name" className="text-gray-700 dark:text-gray-300" />
+                <Label value="Your first name" className="text-gray-700 dark:text-gray-300" />
                 <TextInput
                   type="text"
-                  placeholder="Your full name"
+                  placeholder="Your first name"
                   id="username"
                   onChange={handleChange}
                   value={formData.username || ''}

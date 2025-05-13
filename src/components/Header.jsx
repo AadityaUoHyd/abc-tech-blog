@@ -51,35 +51,37 @@ export default function Header() {
 
   return (
     <Navbar className='border-b-2 bg-white dark:bg-gray-900 shadow-lg transition-colors duration-300 py-3 flex-wrap'>
-      <Link
-        to='/'
-        className='self-center whitespace-nowrap text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white hover:scale-105 transition-transform duration-200'
-      >
-        <span className='px-4 py-2 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-xl text-white shadow-xl'>
-          ABC TECH BLOG
-        </span>
-      </Link>
-      
-<form 
-  onSubmit={handleSubmit} 
-  className="flex items-center w-full gap-3 px-2 sm:max-w-md"
->
-  <TextInput
-    type="text"
-    placeholder="Search articles by title..."
-    rightIcon={AiOutlineSearch}
-    className="flex-1 rounded-full bg-gray-100 dark:bg-gray-800 border border-indigo-300 dark:border-purple-500 focus:ring-2 focus:ring-indigo-500 dark:focus:ring-purple-500 text-base py-2.5 pl-5 pr-12 shadow-sm transition-all duration-300"
-    value={searchTerm}
-    onChange={(e) => setSearchTerm(e.target.value)}
-  />
-  <Button
-    type="submit"
-    className="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-500 hover:bg-indigo-600 text-white transition duration-200 lg:hidden"
-    pill
-  >
-    <AiOutlineSearch className="text-xl" />
-  </Button>
-</form>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4 w-full sm:w-auto">
+        <Link
+          to='/'
+          className='self-start sm:self-center whitespace-nowrap text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white hover:scale-105 transition-transform duration-200'
+        >
+          <span className='px-4 py-2 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-xl text-white shadow-xl'>
+            ABC TECH BLOG
+          </span>
+        </Link>
+
+        <form 
+          onSubmit={handleSubmit} 
+          className="mt-3 sm:mt-0 flex items-center w-full gap-3 px-2 sm:max-w-md"
+        >
+          <TextInput
+            type="text"
+            placeholder="Search articles by title..."
+            rightIcon={AiOutlineSearch}
+            className="flex-1 rounded-full bg-gray-100 dark:bg-gray-800 border border-indigo-300 dark:border-purple-500 focus:ring-2 focus:ring-indigo-500 dark:focus:ring-purple-500 text-base py-2.5 pl-5 pr-12 shadow-sm transition-all duration-300"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <Button
+            type="submit"
+            className="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-500 hover:bg-indigo-600 text-white transition duration-200 lg:hidden"
+            pill
+          >
+            <AiOutlineSearch className="text-xl" />
+          </Button>
+        </form>
+      </div>
 
       <div className='flex gap-3 md:order-2 items-center'>
         <Button

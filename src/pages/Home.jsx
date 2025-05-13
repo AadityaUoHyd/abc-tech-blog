@@ -105,7 +105,7 @@ export default function Home() {
         {/* Text and Button Below Slider */}
         <div className="bg-white dark:bg-gray-800 py-12 px-4 sm:px-8 text-center">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight animate-fade-in">
-            ABC Tech Blog
+            ABC TECH BLOG
           </h1>
           <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-6 animate-slide-up">
             Explore the latest in tech with insightful articles, tutorials, and updates on AI, web development, and more.

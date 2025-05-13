@@ -29,6 +29,7 @@ export default function CommentSection({ postId }) {
           postId,
           userId: currentUser._id,
         }),
+        credentials: 'include',
       });
       const data = await res.json();
       if (res.ok) {
@@ -64,6 +65,7 @@ export default function CommentSection({ postId }) {
       }
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/comment/likeComment/${commentId}`, {
         method: 'PUT',
+        credentials: 'include',
       });
       if (res.ok) {
         const data = await res.json();
@@ -101,6 +103,7 @@ export default function CommentSection({ postId }) {
       }
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/comment/deleteComment/${commentId}`, {
         method: 'DELETE',
+        credentials: 'include',
       });
       if (res.ok) {
         const data = await res.json();

@@ -28,6 +28,7 @@ export default function OAuth() {
       });
       const data = await res.json();
       if (res.ok) {
+        console.log('OAuth: Redux user ID:', data._id);
         dispatch(signInSuccess(data));
         navigate('/');
       } else {

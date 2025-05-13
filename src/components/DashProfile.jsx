@@ -104,10 +104,24 @@ export default function DashProfile() {
       toast.error('No changes made', { position: 'top-right', toastId: 'no-changes' });
       return;
     }
-    if ('username' in formData && !formData.username.trim()) {
-      toast.error('First name cannot be empty', { position: 'top-right', toastId: 'empty-username-update' });
-      return;
+    if ('username' in formData) {
+      const trimmedUsername = formData.username.trim();
+      if (!trimmedUsername) {
+        toast.error('First name cannot be empty', {
+          position: 'top-right',
+          toastId: 'empty-username-update',
+        });
+        return;
+      }
+      if (trimmedUsername.length < 3) {
+        toast.error('First name must be at least 3 characters', {
+          position: 'top-right',
+          toastId: 'short-username-update',
+        });
+        return;
+      }
     }
+
     if (imageFileUploading) {
       toast.error('Please wait for image to upload', { position: 'top-right', toastId: 'image-upload-wait' });
       return;

@@ -83,14 +83,38 @@ function AuthPage() {
       toast.error('Please fill out all fields', { position: 'top-right', toastId: 'missing-fields-signup' });
       return;
     }
-    if (!formData.username.trim()) {
-      toast.error('First name cannot be empty', { position: 'top-right', toastId: 'empty-username-signup' });
+
+    const trimmedUsername = formData.username.trim();
+
+    if (!trimmedUsername) {
+      toast.error('First name cannot be empty', {
+        position: 'top-right',
+        toastId: 'empty-username-signup'
+      });
       return;
     }
+
+    if (trimmedUsername.length < 3) {
+      toast.error('First name must be at least 3 characters long', {
+        position: 'top-right',
+        toastId: 'short-username-signup'
+      });
+      return;
+    }
+
     if (formData.password.length < 8) {
       toast.error('Password must be at least 8 characters long', { position: 'top-right', toastId: 'short-password-signup' });
       return;
     }
+
+    if (!/\d/.test(formData.password)) {
+      toast.error('Password must contain at least one digit (0–9)', {
+        position: 'top-right',
+        toastId: 'no-digit-signup'
+      });
+      return;
+    }
+
     if (!/[!@#$%^&*]/.test(formData.password)) {
       toast.error('Password must contain at least one special character (e.g., !@#$%^&*)', { position: 'top-right', toastId: 'no-special-char-signup' });
       return;
@@ -158,7 +182,7 @@ function AuthPage() {
                 <Label value="Your password" className="text-gray-700 dark:text-gray-300" />
                 <TextInput
                   type="password"
-                  placeholder="**********"
+                  placeholder="Min 8 chars, 1 digit, 1 special (!@#$%^&*)"
                   id="password"
                   onChange={handleChange}
                   autocomplete="current-password"

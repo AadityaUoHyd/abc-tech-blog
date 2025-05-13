@@ -113,8 +113,8 @@ export default function DashProfile() {
         });
         return;
       }
-      if (trimmedUsername.length < 3) {
-        toast.error('First name must be at least 3 characters', {
+      if (trimmedUsername.length < 3 || trimmedUsername.length > 20) {
+        toast.error('First name must be between 3 to 20 characters', {
           position: 'top-right',
           toastId: 'short-username-update',
         });

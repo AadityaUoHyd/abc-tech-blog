@@ -25,10 +25,14 @@ export default function OAuth() {
           email: resultsFromGoogle.user.email,
           googlePhotoUrl: resultsFromGoogle.user.photoURL,
         }),
+        credentials: 'include',
       });
       const data = await res.json();
       if (res.ok) {
         console.log('OAuth: Redux user ID:', data._id);
+        // Check cookies
+        const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+        console.log('OAuth: Cookies after sign-in:', cookies);
         dispatch(signInSuccess(data));
         navigate('/');
       } else {

@@ -94,8 +94,8 @@ function AuthPage() {
       return;
     }
 
-    if (trimmedUsername.length < 3) {
-      toast.error('First name must be at least 3 characters long', {
+    if (trimmedUsername.length < 3 || trimmedUsername.length > 20) {
+      toast.error('First name must be in between 3 and 20 characters long', {
         position: 'top-right',
         toastId: 'short-username-signup'
       });

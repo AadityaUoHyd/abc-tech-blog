@@ -2,7 +2,6 @@ import { Modal, Table, Button } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import { FaCheck, FaTimes } from 'react-icons/fa';
 
 export default function DashComments() {
   const { currentUser } = useSelector((state) => state.user);
@@ -36,8 +35,9 @@ export default function DashComments() {
     const startIndex = comments.length;
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/api/comment/getcomments?startIndex=${startIndex}`
-      );
+        `${import.meta.env.VITE_BACKEND_URL}/api/comment/getcomments?startIndex=${startIndex}`,{
+          credentials: 'include',
+        });
       const data = await res.json();
       if (res.ok) {
         setComments((prev) => [...prev, ...data.comments]);
@@ -57,6 +57,7 @@ export default function DashComments() {
         `${import.meta.env.VITE_BACKEND_URL}/api/comment/deleteComment/${commentIdToDelete}`,
         {
           method: 'DELETE',
+          credentials: 'include',
         }
       );
       const data = await res.json();

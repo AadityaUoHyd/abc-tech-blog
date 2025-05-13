@@ -25,6 +25,9 @@ import VerifyEmail from './pages/VerifyEmail';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function App() {
   return (
     <div className="app-container">
@@ -59,6 +62,18 @@ export default function App() {
           <Route path='*' element={<Home />} />
         </Routes>
         <Footer />
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme={document.documentElement.classList.contains('dark') ? 'dark' : 'light'}
+        />
       </BrowserRouter>
     </div>
   );

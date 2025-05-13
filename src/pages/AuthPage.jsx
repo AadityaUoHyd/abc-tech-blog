@@ -2,10 +2,8 @@ import { Button, Label, Spinner, TextInput } from 'flowbite-react';
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { toast, ToastContainer } from 'react-toastify';
 import { signInStart, signInSuccess, signInFailure, clearError } from '../redux/user/userSlice';
 import OAuth from '../components/OAuth';
-import 'react-toastify/dist/ReactToastify.css';
 
 function AuthPage() {
   const [formData, setFormData] = useState({});
@@ -265,18 +263,9 @@ function AuthPage() {
             </div>
           </div>
         )}
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme={document.documentElement.classList.contains('dark') ? 'dark' : 'light'}
-        />
+        
+
+
       </div>
     </div>
   );

@@ -127,11 +127,20 @@ function AuthPage() {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
+
       if (data.success === false) {
-        const errorMsg = data.message || 'An error occurred during sign-up';
+        let errorMsg = data.message || 'An error occurred during sign-up';
+
+        if (errorMsg.toLowerCase().includes('username')) {
+          errorMsg = 'This username is already taken';
+        } else if (errorMsg.toLowerCase().includes('email')) {
+          errorMsg = 'This email is already registered';
+        }
+
         dispatch(signInFailure(errorMsg));
         return;
       }
+
       if (res.ok) {
         dispatch(signInFailure(null));
         toast.success('Signed up successfully! Please verify your email.', { position: 'top-right', toastId: 'signup-success' });
@@ -303,7 +312,7 @@ function AuthPage() {
             </div>
           </div>
         )}
-        
+
         <ToastContainer
           position="top-right"
           autoClose={3000}

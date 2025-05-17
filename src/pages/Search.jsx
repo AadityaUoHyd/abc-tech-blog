@@ -235,7 +235,7 @@ export default function Search() {
               size="sm"
               className="text-gray-800 dark:text-gray-200 ring-2 ring-indigo-500"
             >
-              {currentPage}
+              Page {currentPage} of {totalPages}
             </Button>
             <Button
               onClick={() => handlePageChange(currentPage + 1)}

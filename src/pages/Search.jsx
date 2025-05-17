@@ -12,7 +12,6 @@ export default function Search() {
 
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [showMore, setShowMore] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPosts, setTotalPosts] = useState(0);
   const postsPerPage = 12;
@@ -25,34 +24,32 @@ export default function Search() {
     const searchTermFromUrl = urlParams.get('searchTerm');
     const sortFromUrl = urlParams.get('sort');
     const categoryFromUrl = urlParams.get('category');
-    if (searchTermFromUrl || sortFromUrl || categoryFromUrl) {
-      setSidebarData({
-        ...sidebarData,
-        searchTerm: searchTermFromUrl,
-        sort: sortFromUrl,
-        category: categoryFromUrl,
-      });
-    }
+    const pageFromUrl = parseInt(urlParams.get('page') || '1', 10);
+
+    setSidebarData({
+      searchTerm: searchTermFromUrl || '',
+      sort: sortFromUrl || 'desc',
+      category: categoryFromUrl || 'uncategorized',
+    });
+    setCurrentPage(pageFromUrl);
 
     const fetchPosts = async () => {
       setLoading(true);
-      const searchQuery = urlParams.toString();
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/post/getposts?${searchQuery}&limit=${postsPerPage}`);
-      if (!res.ok) {
-        setLoading(false);
-        return;
-      }
+      const searchQuery = new URLSearchParams({
+        searchTerm: searchTermFromUrl || '',
+        sort: sortFromUrl || 'desc',
+        category: categoryFromUrl || 'uncategorized',
+        startIndex: ((pageFromUrl - 1) * postsPerPage).toString(),
+        limit: postsPerPage.toString(),
+      }).toString();
+
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/post/getposts?${searchQuery}`);
       if (res.ok) {
         const data = await res.json();
         setPosts(data.posts);
         setTotalPosts(data.totalPosts || data.posts.length);
-        setLoading(false);
-        if (data.posts.length === postsPerPage) {
-          setShowMore(true);
-        } else {
-          setShowMore(false);
-        }
       }
+      setLoading(false);
     };
     fetchPosts();
   }, [location.search]);
@@ -73,121 +70,92 @@ export default function Search() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const urlParams = new URLSearchParams(location.search);
+    const urlParams = new URLSearchParams();
     urlParams.set('searchTerm', sidebarData.searchTerm);
     urlParams.set('sort', sidebarData.sort);
     urlParams.set('category', sidebarData.category);
+    urlParams.set('page', '1');
     const searchQuery = urlParams.toString();
     navigate(`/search?${searchQuery}`);
   };
 
-  const handleShowMore = async () => {
-    const numberOfPosts = posts.length;
-    const startIndex = numberOfPosts;
-    const urlParams = new URLSearchParams(location.search);
-    urlParams.set('startIndex', startIndex);
-    const searchQuery = urlParams.toString();
-    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/post/getposts?${searchQuery}`);
-    if (!res.ok) {
-      return;
-    }
-    if (res.ok) {
-      const data = await res.json();
-      setPosts([...posts, ...data.posts]);
-      setTotalPosts(data.totalPosts || posts.length + data.posts.length);
-      if (data.posts.length === postsPerPage) {
-        setShowMore(true);
-      } else {
-        setShowMore(false);
-      }
-    }
-  };
-
   const handlePageChange = (page) => {
-    setCurrentPage(page);
-    const startIndex = (page - 1) * postsPerPage;
     const urlParams = new URLSearchParams(location.search);
-    urlParams.set('startIndex', startIndex);
-    urlParams.set('limit', postsPerPage);
+    urlParams.set('page', page.toString());
     const searchQuery = urlParams.toString();
     navigate(`/search?${searchQuery}`);
   };
 
   const totalPages = Math.ceil(totalPosts / postsPerPage);
-  const pageNumbers = [];
-  for (let i = Math.max(1, currentPage - 2); i <= Math.min(totalPages, currentPage + 2); i++) {
-    pageNumbers.push(i);
-  }
 
   return (
     <div className="bg-white dark:bg-gray-800 transition-colors duration-300 min-h-screen">
       <div className="p-7">
         {/* Filter Form */}
         <div className="w-full p-4 bg-white dark:bg-gray-600 rounded-2xl shadow-md">
-        <form
-          className="flex flex-col sm:flex-row justify-between gap-10 mb-4 mt-4 animate-fade-in w-full"
-          onSubmit={handleSubmit}
-        >
-          <div className="flex items-center gap-2">
-            <label className="whitespace-nowrap font-semibold text-gray-800 dark:text-gray-200">
-              Search Term:
-            </label>
-            <TextInput
-              placeholder="Search..."
-              id="searchTerm"
-              type="text"
-              value={sidebarData.searchTerm}
-              onChange={handleChange}
-              className="w-40 sm:w-48"
-            />
-          </div>
-          <div className="flex items-center gap-2">
-            <label className="font-semibold text-gray-800 dark:text-gray-200">Sort:</label>
-            <Select
-              onChange={handleChange}
-              value={sidebarData.sort}
-              id="sort"
-              className="w-40 sm:w-48"
-            >
-              <option value="desc">Latest</option>
-              <option value="asc">Oldest</option>
-            </Select>
-          </div>
-          <div className="flex items-center gap-2">
-            <label className="font-semibold text-gray-800 dark:text-gray-200">Category:</label>
-            <Select
-              onChange={handleChange}
-              value={sidebarData.category}
-              id="category"
-              className="w-40 sm:w-48"
-            >
-              <option value="uncategorized">Uncategorized</option>
-              <option value="java">Java</option>
-              <option value="spring">Spring Boot</option>
-              <option value="python">Python</option>
-              <option value="django">Django</option>
-              <option value="ai">AI/ML</option>
-              <option value="javascript">JavaScript</option>
-              <option value="react">React</option>
-              <option value="nextjs">Next.js</option>
-              <option value="angular">Angular</option>
-              <option value="databases">Databases</option>
-              <option value="devops">DevOps</option>
-              <option value="design_patterns">Design Patterns</option>
-              <option value="algorithms">Data Structure & Algorithms</option>
-              <option value="tech">Tech talk</option>
-            </Select>
-          </div>
-          <Button
-            type="submit"
-            gradientDuoTone="purpleToBlue"
-            className="hover:scale-105 transition-transform duration-200 shadow-md animate-slide-up"
+          <form
+            className="flex flex-col sm:flex-row justify-between gap-10 mb-4 mt-4 animate-fade-in w-full"
+            onSubmit={handleSubmit}
           >
-            Apply Filters
-          </Button>
-        </form>
-      </div>
-
+            <div className="flex items-center gap-2">
+              <label className="whitespace-nowrap font-semibold text-gray-800 dark:text-gray-200">
+                Search Term:
+              </label>
+              <TextInput
+                placeholder="Search..."
+                id="searchTerm"
+                type="text"
+                value={sidebarData.searchTerm}
+                onChange={handleChange}
+                className="w-40 sm:w-48"
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <label className="font-semibold text-gray-800 dark:text-gray-200">Sort:</label>
+              <Select
+                onChange={handleChange}
+                value={sidebarData.sort}
+                id="sort"
+                className="w-40 sm:w-48"
+              >
+                <option value="desc">Latest</option>
+                <option value="asc">Oldest</option>
+              </Select>
+            </div>
+            <div className="flex items-center gap-2">
+              <label className="font-semibold text-gray-800 dark:text-gray-200">Category:</label>
+              <Select
+                onChange={handleChange}
+                value={sidebarData.category}
+                id="category"
+                className="w-40 sm:w-48"
+              >
+                <option value="uncategorized">Uncategorized</option>
+                <option value="java">Java</option>
+                <option value="spring">Spring Boot</option>
+                <option value="python">Python</option>
+                <option value="django">Django</option>
+                <option value="ai">AI/ML</option>
+                <option value="javascript">JavaScript</option>
+                <option value="react">React</option>
+                <option value="nextjs">Next.js</option>
+                <option value="angular">Angular</option>
+                <option value="databases">Databases</option>
+                <option value="devops">DevOps</option>
+                <option value="design_patterns">Design Patterns</option>
+                <option value="algorithms">Data Structure & Algorithms</option>
+                <option value="tech">Tech talk</option>
+              </Select>
+            </div>
+            <Button
+              type="submit"
+              gradientDuoTone="purpleToBlue"
+              className="hover:scale-105 transition-transform duration-200 shadow-md animate-slide-up"
+            >
+              Apply Filters
+            </Button>
+          </form>
+        </div>
 
         {/* Posts Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
@@ -203,7 +171,7 @@ export default function Search() {
           )}
           {!loading &&
             posts &&
-            posts.slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage).map((post) => (
+            posts.map((post) => (
               <div key={post._id} className="w-full animate-fade-in-up">
                 <PostCard post={post} />
               </div>
@@ -231,19 +199,14 @@ export default function Search() {
             >
               Previous
             </Button>
-            {pageNumbers.map((page) => (
-              <Button
-                key={page}
-                onClick={() => handlePageChange(page)}
-                gradientDuoTone={currentPage === page ? 'purpleToPink' : 'purpleToBlue'}
-                size="sm"
-                className={`hover:scale-105 transition-transform duration-200 text-gray-800 dark:text-gray-200 ${
-                  currentPage === page ? 'ring-2 ring-indigo-500' : ''
-                }`}
-              >
-                {page}
-              </Button>
-            ))}
+            <Button
+              disabled
+              gradientDuoTone="purpleToPink"
+              size="sm"
+              className="text-gray-800 dark:text-gray-200 ring-2 ring-indigo-500"
+            >
+              {currentPage}
+            </Button>
             <Button
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}

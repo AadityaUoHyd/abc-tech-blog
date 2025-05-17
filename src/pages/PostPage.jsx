@@ -1,7 +1,7 @@
 import { Button, Spinner } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { FaWhatsapp, FaTelegram, FaFacebook, FaTwitter, FaLink } from 'react-icons/fa';
+import { FaWhatsapp, FaTelegram, FaFacebook, FaTwitter, FaLink, FaLinkedin } from 'react-icons/fa';
 import CommentSection from '../components/CommentSection';
 import PostCard from '../components/PostCard';
 
@@ -69,6 +69,9 @@ export default function PostPage() {
       case 'twitter':
         shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${title}`;
         break;
+      case 'linkedin':
+        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+        break;
       case 'copy':
         navigator.clipboard.writeText(url).then(() => {
           alert('Link copied to clipboard!');
@@ -80,6 +83,7 @@ export default function PostPage() {
 
     window.open(shareUrl, '_blank', 'noopener,noreferrer');
   };
+
 
   if (loading)
     return (
@@ -149,7 +153,7 @@ export default function PostPage() {
           </h2>
           <div className='flex flex-col sm:flex-row gap-3'>
             <Button
-              color='gray'
+              color='green'
               size='md'
               pill
               onClick={() => handleShare('whatsapp')}
@@ -159,7 +163,7 @@ export default function PostPage() {
               <FaWhatsapp className='text-xl' />
             </Button>
             <Button
-              color='gray'
+              color='blue'
               size='md'
               pill
               onClick={() => handleShare('telegram')}
@@ -169,7 +173,7 @@ export default function PostPage() {
               <FaTelegram className='text-xl' />
             </Button>
             <Button
-              color='gray'
+              color='blue'
               size='md'
               pill
               onClick={() => handleShare('facebook')}
@@ -179,7 +183,7 @@ export default function PostPage() {
               <FaFacebook className='text-xl' />
             </Button>
             <Button
-              color='gray'
+              color='black'
               size='md'
               pill
               onClick={() => handleShare('twitter')}
@@ -188,6 +192,18 @@ export default function PostPage() {
             >
               <FaTwitter className='text-xl' />
             </Button>
+
+            <Button
+              color='blue'
+              size='md'
+              pill
+              onClick={() => handleShare('linkedin')}
+              className='bg-gray-200 dark:bg-gray-700 hover:bg-blue-400 hover:text-white w-12 h-12 flex items-center justify-center transform hover:scale-110 transition-transform duration-200'
+              title='Share on LinkedIn'
+            >
+              <FaLinkedin className='text-xl' />
+            </Button>
+
             <Button
               color='gray'
               size='md'
@@ -211,30 +227,30 @@ export default function PostPage() {
 
 
       </div>
-        {/* Recent Articles Section */}
+      {/* Recent Articles Section */}
       <div className='mt-10 px-6 sm:px-8 py-8 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-black dark:to-gray-700 rounded-xl mx-4 sm:mx-8 mb-8'>
-          <h2 className='text-2xl sm:text-3xl font-bold text-center text-gray-800 dark:text-white mb-8'>
-            Explore More Articles
-          </h2>
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-            {recentPosts &&
-              recentPosts.map((post) => (
-                <div
-                  key={post._id}
-                  className='transform hover:scale-105 transition-transform duration-200'
-                >
-                  <PostCard post={post} />
-                </div>
-              ))}
-          </div>
-          <div className="flex justify-center mt-8">
-            <Link
-              to="/search"
-              className="mt-8 inline-block px-6 py-3 text-lg font-semibold text-white bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg hover:from-indigo-600 hover:to-purple-600 hover:scale-105 transition-all duration-200 shadow-md animate-slide-up"
-            >
-              View All Articles
-            </Link>
-          </div>
+        <h2 className='text-2xl sm:text-3xl font-bold text-center text-gray-800 dark:text-white mb-8'>
+          Explore More Articles
+        </h2>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+          {recentPosts &&
+            recentPosts.map((post) => (
+              <div
+                key={post._id}
+                className='transform hover:scale-105 transition-transform duration-200'
+              >
+                <PostCard post={post} />
+              </div>
+            ))}
+        </div>
+        <div className="flex justify-center mt-8">
+          <Link
+            to="/search"
+            className="mt-8 inline-block px-6 py-3 text-lg font-semibold text-white bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg hover:from-indigo-600 hover:to-purple-600 hover:scale-105 transition-all duration-200 shadow-md animate-slide-up"
+          >
+            View All Articles
+          </Link>
+        </div>
       </div>
     </main>
   );

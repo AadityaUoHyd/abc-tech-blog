@@ -52,11 +52,11 @@ export default function Projects() {
     {
       _id: '6',
       title: 'ABC BUS BOOKINGS',
-      description: 'Python based project to book online ticket for bus travel.',
+      description: 'Python based project to book online ticket for inter-city bus travel in India.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/my-github-repo-readme-generator/refs/heads/main/images/github_readme_generated.png',
       createdAt: new Date('2025-03-20'),
-      githubUrl: 'https://github.com/AadityaUoHyd/my-github-repo-readme-generator',
-      liveUrl: 'https://my-github-repo-readme-generator.onrender.com/',
+      githubUrl: 'https://github.com/AadityaUoHyd/abc-bus-bookings',
+      liveUrl: 'https://abc-bus-bookings.vercel.app/',
     },
     {
       _id: '7',

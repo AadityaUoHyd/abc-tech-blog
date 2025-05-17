@@ -157,7 +157,7 @@ export default function PostPage() {
               size='md'
               pill
               onClick={() => handleShare('whatsapp')}
-              className='bg-gray-500 dark:bg-gray-700 hover:bg-green-800 hover:dark:bg-green-400 hover:text-white dark:hover:text-white w-12 h-12 flex items-center justify-center transform hover:scale-110 transition-transform duration-200'
+              className='bg-green-500 dark:bg-green-300 hover:bg-green-700 hover:dark:bg-green-500 hover:text-black dark:hover:text-white w-12 h-12 flex items-center justify-center transform hover:scale-110 transition-transform duration-200'
               title='Share on WhatsApp'
             >
               <FaWhatsapp className='text-xl' />
@@ -167,7 +167,7 @@ export default function PostPage() {
               size='md'
               pill
               onClick={() => handleShare('telegram')}
-              className='bg-gray-500 dark:bg-gray-700 hover:bg-blue-700 hover:text-white hover:dark:bg-blue-400 w-12 h-12 flex items-center justify-center transform hover:scale-110 transition-transform duration-200'
+              className='bg-blue-500 dark:bg-blue-300 hover:bg-blue-700 hover:dark:bg-blue-500 hover:text-black dark:hover:text-white w-12 h-12 flex items-center justify-center transform hover:scale-110 transition-transform duration-200'
               title='Share on Telegram'
             >
               <FaTelegram className='text-xl' />
@@ -177,7 +177,7 @@ export default function PostPage() {
               size='md'
               pill
               onClick={() => handleShare('facebook')}
-              className='bg-gray-500 dark:bg-gray-700 hover:bg-blue-700 hover:text-white  dark:dark:bg-gray-400 w-12 h-12 flex items-center justify-center transform hover:scale-110 transition-transform duration-200'
+              className='g-blue-500 dark:bg-blue-300 hover:bg-blue-700 hover:dark:bg-blue-500 hover:text-black dark:hover:text-white w-12 h-12 flex items-center justify-center transform hover:scale-110 transition-transform duration-200'
               title='Share on Facebook'
             >
               <FaFacebook className='text-xl' />
@@ -187,7 +187,7 @@ export default function PostPage() {
               size='md'
               pill
               onClick={() => handleShare('twitter')}
-              className='bg-gray-500 dark:bg-gray-700 hover:bg-blue-400 hover:text-white hover:dark:bg-gray-400 w-12 h-12 flex items-center justify-center transform hover:scale-110 transition-transform duration-200'
+              className='g-blue-500 dark:bg-blue-300 hover:bg-blue-700 hover:dark:bg-blue-500 hover:text-black dark:hover:text-white w-12 h-12 flex items-center justify-center transform hover:scale-110 transition-transform duration-200'
               title='Share on Twitter'
             >
               <FaTwitter className='text-xl' />
@@ -198,18 +198,18 @@ export default function PostPage() {
               size='md'
               pill
               onClick={() => handleShare('linkedin')}
-              className='bg-gray-500 dark:bg-gray-700 hover:bg-blue-400 hover:text-white hover:dark:bg-gray-400 w-12 h-12 flex items-center justify-center transform hover:scale-110 transition-transform duration-200'
+              className='g-blue-500 dark:bg-blue-300 hover:bg-blue-700 hover:dark:bg-blue-500 hover:text-black dark:hover:text-white w-12 h-12 flex items-center justify-center transform hover:scale-110 transition-transform duration-200'
               title='Share on LinkedIn'
             >
               <FaLinkedin className='text-xl' />
             </Button>
 
             <Button
-              color='gray'
+              color='pink'
               size='md'
               pill
               onClick={() => handleShare('copy')}
-              className='bg-gray-500 dark:bg-gray-700 hover:bg-gray-500 hover:text-white hover:dark:bg-gray-400 w-12 h-12 flex items-center justify-center transform hover:scale-110 transition-transform duration-200'
+              className='g-pink-500 dark:bg-pink-300 hover:bg-pink-700 hover:dark:bg-pink-500 hover:text-black dark:hover:text-white w-12 h-12 flex items-center justify-center transform hover:scale-110 transition-transform duration-200'
               title='Copy Link'
             >
               <FaLink className='text-xl' />

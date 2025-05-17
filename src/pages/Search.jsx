@@ -12,6 +12,7 @@ export default function Search() {
 
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showMore, setShowMore] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPosts, setTotalPosts] = useState(0);
   const postsPerPage = 12;
@@ -25,31 +26,36 @@ export default function Search() {
     const sortFromUrl = urlParams.get('sort');
     const categoryFromUrl = urlParams.get('category');
     const pageFromUrl = parseInt(urlParams.get('page') || '1', 10);
-
-    setSidebarData({
-      searchTerm: searchTermFromUrl || '',
-      sort: sortFromUrl || 'desc',
-      category: categoryFromUrl || 'uncategorized',
-    });
+    
+    if (searchTermFromUrl || sortFromUrl || categoryFromUrl) {
+      setSidebarData({
+        ...sidebarData,
+        searchTerm: searchTermFromUrl,
+        sort: sortFromUrl,
+        category: categoryFromUrl,
+      });
+    }
     setCurrentPage(pageFromUrl);
 
     const fetchPosts = async () => {
       setLoading(true);
-      const searchQuery = new URLSearchParams({
-        searchTerm: searchTermFromUrl || '',
-        sort: sortFromUrl || 'desc',
-        category: categoryFromUrl || 'uncategorized',
-        startIndex: ((pageFromUrl - 1) * postsPerPage).toString(),
-        limit: postsPerPage.toString(),
-      }).toString();
-
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/post/getposts?${searchQuery}`);
+      const searchQuery = urlParams.toString();
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/post/getposts?${searchQuery}&limit=${postsPerPage}&startIndex=${(pageFromUrl - 1) * postsPerPage}`);
+      if (!res.ok) {
+        setLoading(false);
+        return;
+      }
       if (res.ok) {
         const data = await res.json();
         setPosts(data.posts);
         setTotalPosts(data.totalPosts || data.posts.length);
+        setLoading(false);
+        if (data.posts.length === postsPerPage) {
+          setShowMore(true);
+        } else {
+          setShowMore(false);
+        }
       }
-      setLoading(false);
     };
     fetchPosts();
   }, [location.search]);
@@ -70,7 +76,7 @@ export default function Search() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const urlParams = new URLSearchParams();
+    const urlParams = new URLSearchParams(location.search);
     urlParams.set('searchTerm', sidebarData.searchTerm);
     urlParams.set('sort', sidebarData.sort);
     urlParams.set('category', sidebarData.category);
@@ -79,7 +85,30 @@ export default function Search() {
     navigate(`/search?${searchQuery}`);
   };
 
+  const handleShowMore = async () => {
+    const numberOfPosts = posts.length;
+    const startIndex = numberOfPosts;
+    const urlParams = new URLSearchParams(location.search);
+    urlParams.set('startIndex', startIndex);
+    const searchQuery = urlParams.toString();
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/post/getposts?${searchQuery}`);
+    if (!res.ok) {
+      return;
+    }
+    if (res.ok) {
+      const data = await res.json();
+      setPosts([...posts, ...data.posts]);
+      setTotalPosts(data.totalPosts || posts.length + data.posts.length);
+      if (data.posts.length === postsPerPage) {
+        setShowMore(true);
+      } else {
+        setShowMore(false);
+      }
+    }
+  };
+
   const handlePageChange = (page) => {
+    setCurrentPage(page);
     const urlParams = new URLSearchParams(location.search);
     urlParams.set('page', page.toString());
     const searchQuery = urlParams.toString();
@@ -93,69 +122,70 @@ export default function Search() {
       <div className="p-7">
         {/* Filter Form */}
         <div className="w-full p-4 bg-white dark:bg-gray-600 rounded-2xl shadow-md">
-          <form
-            className="flex flex-col sm:flex-row justify-between gap-10 mb-4 mt-4 animate-fade-in w-full"
-            onSubmit={handleSubmit}
-          >
-            <div className="flex items-center gap-2">
-              <label className="whitespace-nowrap font-semibold text-gray-800 dark:text-gray-200">
-                Search Term:
-              </label>
-              <TextInput
-                placeholder="Search..."
-                id="searchTerm"
-                type="text"
-                value={sidebarData.searchTerm}
-                onChange={handleChange}
-                className="w-40 sm:w-48"
-              />
-            </div>
-            <div className="flex items-center gap-2">
-              <label className="font-semibold text-gray-800 dark:text-gray-200">Sort:</label>
-              <Select
-                onChange={handleChange}
-                value={sidebarData.sort}
-                id="sort"
-                className="w-40 sm:w-48"
-              >
-                <option value="desc">Latest</option>
-                <option value="asc">Oldest</option>
-              </Select>
-            </div>
-            <div className="flex items-center gap-2">
-              <label className="font-semibold text-gray-800 dark:text-gray-200">Category:</label>
-              <Select
-                onChange={handleChange}
-                value={sidebarData.category}
-                id="category"
-                className="w-40 sm:w-48"
-              >
-                <option value="uncategorized">Uncategorized</option>
-                <option value="java">Java</option>
-                <option value="spring">Spring Boot</option>
-                <option value="python">Python</option>
-                <option value="django">Django</option>
-                <option value="ai">AI/ML</option>
-                <option value="javascript">JavaScript</option>
-                <option value="react">React</option>
-                <option value="nextjs">Next.js</option>
-                <option value="angular">Angular</option>
-                <option value="databases">Databases</option>
-                <option value="devops">DevOps</option>
-                <option value="design_patterns">Design Patterns</option>
-                <option value="algorithms">Data Structure & Algorithms</option>
-                <option value="tech">Tech talk</option>
-              </Select>
-            </div>
-            <Button
-              type="submit"
-              gradientDuoTone="purpleToBlue"
-              className="hover:scale-105 transition-transform duration-200 shadow-md animate-slide-up"
+        <form
+          className="flex flex-col sm:flex-row justify-between gap-10 mb-4 mt-4 animate-fade-in w-full"
+          onSubmit={handleSubmit}
+        >
+          <div className="flex items-center gap-2">
+            <label className="whitespace-nowrap font-semibold text-gray-800 dark:text-gray-200">
+              Search Term:
+            </label>
+            <TextInput
+              placeholder="Search..."
+              id="searchTerm"
+              type="text"
+              value={sidebarData.searchTerm}
+              onChange={handleChange}
+              className="w-40 sm:w-48"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <label className="font-semibold text-gray-800 dark:text-gray-200">Sort:</label>
+            <Select
+              onChange={handleChange}
+              value={sidebarData.sort}
+              id="sort"
+              className="w-40 sm:w-48"
             >
-              Apply Filters
-            </Button>
-          </form>
-        </div>
+              <option value="desc">Latest</option>
+              <option value="asc">Oldest</option>
+            </Select>
+          </div>
+          <div className="flex items-center gap-2">
+            <label className="font-semibold text-gray-800 dark:text-gray-200">Category:</label>
+            <Select
+              onChange={handleChange}
+              value={sidebarData.category}
+              id="category"
+              className="w-40 sm:w-48"
+            >
+              <option value="uncategorized">Uncategorized</option>
+              <option value="java">Java</option>
+              <option value="spring">Spring Boot</option>
+              <option value="python">Python</option>
+              <option value="django">Django</option>
+              <option value="ai">AI/ML</option>
+              <option value="javascript">JavaScript</option>
+              <option value="react">React</option>
+              <option value="nextjs">Next.js</option>
+              <option value="angular">Angular</option>
+              <option value="databases">Databases</option>
+              <option value="devops">DevOps</option>
+              <option value="design_patterns">Design Patterns</option>
+              <option value="algorithms">Data Structure & Algorithms</option>
+              <option value="tech">Tech talk</option>
+            </Select>
+          </div>
+          <Button
+            type="submit"
+            gradientDuoTone="purpleToBlue"
+            className="hover:scale-105 transition-transform duration-200 shadow-md animate-slide-up"
+          >
+            Apply Filters
+          </Button>
+        </form>
+      </div>
+
 
         {/* Posts Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">

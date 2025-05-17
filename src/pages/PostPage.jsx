@@ -157,7 +157,7 @@ export default function PostPage() {
               size='md'
               pill
               onClick={() => handleShare('whatsapp')}
-              className='bg-green-500 dark:bg-green-600 hover:bg-green-700 hover:dark:bg-green-400 hover:text-black dark:hover:text-white w-12 h-12 flex items-center justify-center transform hover:scale-110 transition-transform duration-200'
+              className='bg-green-500 dark:bg-green-600 hover:bg-green-700 dark:hover:bg-green-400 hover:text-black dark:hover:text-white w-12 h-12 flex items-center justify-center transform hover:scale-110 transition-transform duration-200'
               title='Share on WhatsApp'
             >
               <FaWhatsapp className='text-xl' />
@@ -209,7 +209,7 @@ export default function PostPage() {
               size='md'
               pill
               onClick={() => handleShare('copy')}
-              className='bg-pink-500 dark:bg-pink-600 hover:bg-pink-700 hover:dark:bg-pink-400 hover:text-black dark:hover:text-white w-12 h-12 flex items-center justify-center transform hover:scale-110 transition-transform duration-200'
+              className='bg-pink-500 dark:bg-pink-600 hover:bg-pink-700 dark:hover:bg-pink-400 hover:text-black dark:hover:text-white w-12 h-12 flex items-center justify-center transform hover:scale-110 transition-transform duration-200'
               title='Copy Link'
             >
               <FaLink className='text-xl' />

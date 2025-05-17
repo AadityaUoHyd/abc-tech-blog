@@ -85,6 +85,15 @@ export default function Projects() {
       githubUrl: 'https://github.com/AadityaUoHyd/billing-abc',
       liveUrl: 'https://github.com/AadityaUoHyd/billing-abc',
     },
+    {
+      _id: '10',
+      title: 'ABCart',
+      description: 'NextJs-15, Sanity.io CMS, Clerk auth, and React based online ecommerce shop for snacks',
+      image: 'https://github.com/AadityaUoHyd/ABCart/blob/main/abcart2.png',
+      createdAt: new Date('2025-03-15'),
+      githubUrl: 'https://github.com/AadityaUoHyd/ABCart',
+      liveUrl: 'https://abcart-sigma.vercel.app/',
+    },
   ];
 
   return (

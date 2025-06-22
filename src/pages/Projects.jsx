@@ -6,6 +6,15 @@ export default function Projects() {
   const projects = [
     {
       _id: '1',
+      title: 'ABC Evantra',
+      description: 'Full-stack web app for event ticket management, allowing organizers/users/staff to create, purchase, verify event tickets. Used Spring boot & React.',
+      image: 'https://raw.githubusercontent.com/AadityaUoHyd/abc-evantra/refs/heads/main/abc-evantra-screenshot.png',
+      createdAt: new Date('2025-05-24'),
+      githubUrl: 'https://github.com/AadityaUoHyd/abc-evantra',
+      liveUrl: 'https://abc-evantra.vercel.app/',
+    },
+    {
+      _id: '2',
       title: 'The PlateNet',
       description: 'A Full stack food delivery application built with Java-SpringBoot, ReactJs, MongoDB and AWS-S3.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/the-platenet/refs/heads/main/screenshot.png',
@@ -14,16 +23,16 @@ export default function Projects() {
       liveUrl: 'https://the-platenet.vercel.app/',
     },
     {
-      _id: '2',
+      _id: '3',
       title: 'Billing ABC',
       description: 'Java, PostgreSQL and React based retail shop market billing software. Say, BigBazar, Vishal Mega Mart, or even small shop can use it.',
-      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c',
+      image: 'https://raw.githubusercontent.com/AadityaUoHyd/the-billing-abc/refs/heads/main/Screenshot.png',
       createdAt: new Date('2025-03-05'),
       githubUrl: 'https://github.com/AadityaUoHyd/billing-abc',
       liveUrl: 'https://github.com/AadityaUoHyd/billing-abc',
     },
     {
-      _id: '3',
+      _id: '4',
       title: 'Muscle-AI',
       description: 'A conversational AI powered voice gym trainer using NextJs, Vapi, clerk.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/muscle-ai/refs/heads/main/public/screenshot-for-readme.png',
@@ -32,7 +41,7 @@ export default function Projects() {
       liveUrl: 'https://the-muscle-ai.vercel.app/',
     },
     {
-      _id: '4',
+      _id: '5',
       title: 'e-Renaissance',
       description: 'digital learning through video lectures platform. MERN Stack project with Cloudinary.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/e-renaissance-frontend/refs/heads/main/src/assets/hero1.png',
@@ -41,7 +50,7 @@ export default function Projects() {
       liveUrl: 'https://e-renaissance.vercel.app/',
     },
     {
-      _id: '5',
+      _id: '6',
       title: 'Healthcare-Prescription-Guide',
       description: 'A Python-based ML model to identify & classify diseases with high accuracy.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/healthcare-prescription-guide/refs/heads/main/static/images/img.png',
@@ -50,7 +59,7 @@ export default function Projects() {
       liveUrl: 'https://healthcare-prescription-guide.onrender.com/',
     },
     {
-      _id: '6',
+      _id: '7',
       title: 'Geopolitik Simplified',
       description: 'My personal blog build in Java, PostgreSQL & React',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/geopolitiksimplified/refs/heads/main/src/assets/logo.jpg',
@@ -59,7 +68,7 @@ export default function Projects() {
       liveUrl: 'https://geopolitiksimplified.onrender.com/',
     },
     {
-      _id: '7',
+      _id: '8',
       title: 'ABC BUS BOOKINGS',
       description: 'Python based project to book online ticket for inter-city bus travel in India.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/abc-bus-bookings/refs/heads/main/Screenshot.png',
@@ -68,7 +77,7 @@ export default function Projects() {
       liveUrl: 'https://abc-bus-bookings.vercel.app/',
     },
     {
-      _id: '8',
+      _id: '9',
       title: 'AadityaCom',
       description: 'A Java and Angular based eCommerce platform.',
       image: 'https://images.unsplash.com/photo-1664575602276-acd073f104c1',
@@ -77,7 +86,7 @@ export default function Projects() {
       liveUrl: 'https://github.com/AadityaUoHyd/AadityaCom',
     },
     {
-      _id: '9',
+      _id: '10',
       title: 'ABCart',
       description: 'NextJs-15, Sanity.io CMS, Clerk auth, and React based online ecommerce shop for snacks',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/ABCart/refs/heads/main/abcart2.png',
@@ -86,7 +95,7 @@ export default function Projects() {
       liveUrl: 'https://abcart-sigma.vercel.app/',
     },
     {
-      _id: '10',
+      _id: '11',
       title: 'Personify Resume with AI',
       description: 'Personify Resume with AI, is an AI-powered resume-building web application that leverages Spring AI',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/personify-resume-with-ai/refs/heads/main/screenshots/2generate-resume.png',
@@ -94,6 +103,25 @@ export default function Projects() {
       githubUrl: 'https://github.com/AadityaUoHyd/personify-resume-with-ai',
       liveUrl: 'https://github.com/AadityaUoHyd/personify-resume-with-ai',
     },
+	{
+      _id: '12',
+      title: 'ABC-Quizzy',
+      description: 'Play Quizes with AI. It is an AI-powered quiz creation & playing web application. build in FastAPI and React',
+      image: 'https://raw.githubusercontent.com/AadityaUoHyd/abc-quizzy/refs/heads/main/abc-quizzy-screenshot.png',
+      createdAt: new Date('2025-05-30'),
+      githubUrl: 'https://github.com/AadityaUoHyd/abc-quizzy',
+      liveUrl: 'https://abc-quizzy.vercel.app',
+    },
+	{
+      _id: '13',
+      title: 'Library Book Networks',
+      description: 'Play Quizes with AI. It is an AI-powered quiz creation & playing web application. build in FastAPI and React',
+      image: 'https://raw.githubusercontent.com/AadityaUoHyd/library-book-network-keycloak-app/refs/heads/master/adding-book.png',
+      createdAt: new Date('2024-05-30'),
+      githubUrl: 'https://github.com/AadityaUoHyd/library-book-network-keycloak-app',
+      liveUrl: 'https://github.com/AadityaUoHyd/library-book-network-keycloak-app',
+    }
+	
   ];
 
   return (

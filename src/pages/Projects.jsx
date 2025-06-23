@@ -29,7 +29,7 @@ export default function Projects() {
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/the-billing-abc/refs/heads/main/Screenshot.png',
       createdAt: new Date('2025-03-05'),
       githubUrl: 'https://github.com/AadityaUoHyd/billing-abc',
-      liveUrl: 'https://github.com/AadityaUoHyd/billing-abc',
+      liveUrl: 'https://billing-abc.vercel.app/',
     },
     {
       _id: '4',

@@ -80,7 +80,7 @@ export default function Projects() {
       _id: '9',
       title: 'AadityaCom',
       description: 'A Java and Angular based eCommerce platform.',
-      image: 'https://images.unsplash.com/photo-1664575602276-acd073f104c1',
+      image: 'https://raw.githubusercontent.com/AadityaUoHyd/aadityacom/refs/heads/main/aadityacom-screenshot.png',
       createdAt: new Date('2025-03-10'),
       githubUrl: 'https://github.com/AadityaUoHyd/AadityaCom',
       liveUrl: 'https://github.com/AadityaUoHyd/AadityaCom',

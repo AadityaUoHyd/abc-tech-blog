@@ -115,11 +115,11 @@ export default function Projects() {
 	{
       _id: '13',
       title: 'Library Book Networks',
-      description: 'Play Quizes with AI. It is an AI-powered quiz creation & playing web application. build in FastAPI and React',
-      image: 'https://raw.githubusercontent.com/AadityaUoHyd/library-book-network-keycloak-app/refs/heads/master/adding-book.png',
+      description: 'Full Stack web application to share books with friends, classmates, library mates. Build in Spring boot and Angular',
+      image: 'https://raw.githubusercontent.com/AadityaUoHyd/library-book-network/refs/heads/main/Screenshot.png',
       createdAt: new Date('2024-05-30'),
-      githubUrl: 'https://github.com/AadityaUoHyd/library-book-network-keycloak-app',
-      liveUrl: 'https://github.com/AadityaUoHyd/library-book-network-keycloak-app',
+      githubUrl: 'https://github.com/AadityaUoHyd/library-book-network',
+      liveUrl: 'https://library-book-network.vercel.app',
     }
 	
   ];

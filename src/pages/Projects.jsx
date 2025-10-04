@@ -24,6 +24,15 @@ export default function Projects() {
     },
     {
       _id: '3',
+      title: 'GaanaTree',
+      description: 'Java, PostgreSQL and React based retail shop market billing software. Say, BigBazar, Vishal Mega Mart, or even small shop can use it.',
+      image: 'https://raw.githubusercontent.com/AadityaUoHyd/gaana-tree/refs/heads/main/screenshots/home.png',
+      createdAt: new Date('2025-10-04'),
+      githubUrl: 'https://github.com/AadityaUoHyd/gaana-tree',
+      liveUrl: 'https://gaana-tree.vercel.app/',
+    },
+    {
+      _id: '4',
       title: 'Billing ABC',
       description: 'Java, PostgreSQL and React based retail shop market billing software. Say, BigBazar, Vishal Mega Mart, or even small shop can use it.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/the-billing-abc/refs/heads/main/Screenshot.png',
@@ -32,7 +41,7 @@ export default function Projects() {
       liveUrl: 'https://billing-abc.vercel.app/',
     },
     {
-      _id: '4',
+      _id: '5',
       title: 'ABC-Hotel, Goa',
       description: 'Java/Spring boot, MySQL and Angular based hotel room booking application. Personalized project for a hotel vendor.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/abc-hotel-goa/refs/heads/main/screenshot.png',
@@ -41,7 +50,7 @@ export default function Projects() {
       liveUrl: 'https://abc-hotel-goa.vercel.app/',
     },
     {
-      _id: '5',
+      _id: '6',
       title: 'Muscle-AI',
       description: 'A conversational AI powered voice gym trainer using NextJs, Vapi, clerk.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/muscle-ai/refs/heads/main/public/screenshot-for-readme.png',
@@ -50,7 +59,7 @@ export default function Projects() {
       liveUrl: 'https://the-muscle-ai.vercel.app/',
     },
     {
-      _id: '6',
+      _id: '7',
       title: 'e-Renaissance',
       description: 'digital learning through video lectures platform. MERN Stack project with Cloudinary.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/e-renaissance-frontend/refs/heads/main/src/assets/hero1.png',
@@ -59,7 +68,7 @@ export default function Projects() {
       liveUrl: 'https://e-renaissance.vercel.app/',
     },
     {
-      _id: '7',
+      _id: '8',
       title: 'Healthcare-Prescription-Guide',
       description: 'A Python-based ML model to identify & classify diseases with high accuracy.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/healthcare-prescription-guide/refs/heads/main/static/images/img.png',
@@ -68,7 +77,7 @@ export default function Projects() {
       liveUrl: 'https://healthcare-prescription-guide.onrender.com/',
     },
     {
-      _id: '8',
+      _id: '9',
       title: 'Geopolitik Simplified',
       description: 'My personal blog build in Java, PostgreSQL & React',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/geopolitiksimplified/refs/heads/main/src/assets/logo.jpg',
@@ -77,7 +86,7 @@ export default function Projects() {
       liveUrl: 'https://geopolitiksimplified.onrender.com/',
     },
     {
-      _id: '9',
+      _id: '10',
       title: 'ABC BUS BOOKINGS',
       description: 'Python based project to book online ticket for inter-city bus travel in India.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/abc-bus-bookings/refs/heads/main/Screenshot.png',
@@ -86,7 +95,7 @@ export default function Projects() {
       liveUrl: 'https://abc-bus-bookings.vercel.app/',
     },
     {
-      _id: '10',
+      _id: '11',
       title: 'AadityaCom',
       description: 'A Java and Angular based eCommerce platform.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/aadityacom/refs/heads/main/aadityacom-screenshot.png',
@@ -95,7 +104,7 @@ export default function Projects() {
       liveUrl: 'https://github.com/AadityaUoHyd/AadityaCom',
     },
     {
-      _id: '11',
+      _id: '12',
       title: 'ABCart',
       description: 'NextJs-15, Sanity.io CMS, Clerk auth, and React based online ecommerce shop for snacks',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/ABCart/refs/heads/main/abcart2.png',
@@ -104,7 +113,7 @@ export default function Projects() {
       liveUrl: 'https://abcart-sigma.vercel.app/',
     },
     {
-      _id: '12',
+      _id: '13',
       title: 'Personify Resume with AI',
       description: 'Personify Resume with AI, is an AI-powered resume-building web application that leverages Spring AI',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/personify-resume-with-ai/refs/heads/main/screenshots/2generate-resume.png',
@@ -113,7 +122,7 @@ export default function Projects() {
       liveUrl: 'https://github.com/AadityaUoHyd/personify-resume-with-ai',
     },
 	{
-      _id: '13',
+      _id: '14',
       title: 'ABC-Quizzy',
       description: 'Play Quizes with AI. It is an AI-powered quiz creation & playing web application. build in FastAPI and React',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/abc-quizzy/refs/heads/main/abc-quizzy-screenshot.png',
@@ -122,7 +131,7 @@ export default function Projects() {
       liveUrl: 'https://abc-quizzy.vercel.app',
     },
 	{
-      _id: '14',
+      _id: '15',
       title: 'Library Book Networks',
       description: 'Full Stack web application to share books with friends, classmates, library mates. Build in Spring boot and Angular',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/library-book-network/refs/heads/main/Screenshot.png',

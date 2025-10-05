@@ -16,7 +16,7 @@ export default function Projects() {
     {
       _id: '2',
       title: 'The PlateNet',
-      description: 'A Full stack food delivery application built with Java-SpringBoot, ReactJs, MongoDB and AWS-S3.',
+      description: 'A Full stack food delivery application built with Java(SpringBoot), ReactJs, MongoDB and AWS-S3.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/the-platenet/refs/heads/main/screenshot.png',
       createdAt: new Date('2025-05-24'),
       githubUrl: 'https://github.com/AadityaUoHyd/the-platenet',
@@ -25,7 +25,7 @@ export default function Projects() {
     {
       _id: '3',
       title: 'GaanaTree',
-      description: 'Java, MongoDB and React based online song streaming platform. User can like, comments on songs, and can listen to albums with respective subscribe type.',
+      description: 'Java(SpringBoot), MongoDB and React based online song streaming platform. User can like, comments on songs, and can listen to albums with respective subscribe type.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/gaana-tree/refs/heads/main/screenshots/home.png',
       createdAt: new Date('2025-10-04'),
       githubUrl: 'https://github.com/AadityaUoHyd/gaana-tree',
@@ -34,7 +34,7 @@ export default function Projects() {
     {
       _id: '4',
       title: 'Billing ABC',
-      description: 'Java, PostgreSQL and React based retail shop market billing software. Say, BigBazar, Vishal Mega Mart, or even small shop can use it.',
+      description: 'Java(SpringBoot), PostgreSQL and React based retail shop market billing software. Say, BigBazar, Vishal Mega Mart, or even small shop can use it.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/the-billing-abc/refs/heads/main/Screenshot.png',
       createdAt: new Date('2025-03-05'),
       githubUrl: 'https://github.com/AadityaUoHyd/billing-abc',
@@ -43,7 +43,7 @@ export default function Projects() {
     {
       _id: '5',
       title: 'ABC-Hotel, Goa',
-      description: 'Java/Spring boot, MySQL and Angular based hotel room booking application. Personalized project for a hotel vendor.',
+      description: 'Java(SpringBoot), MySQL and Angular based hotel room booking application. Personalized project for a hotel vendor.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/abc-hotel-goa/refs/heads/main/screenshot.png',
       createdAt: new Date('2025-07-05'),
       githubUrl: 'https://github.com/AadityaUoHyd/abc-hotel-goa',
@@ -61,7 +61,7 @@ export default function Projects() {
     {
       _id: '7',
       title: 'e-Renaissance',
-      description: 'digital learning through video lectures platform. MERN Stack project with Cloudinary.',
+      description: 'A digital learning platform built with the MERN stack, featuring video lecture integration and Cloudinary for media management.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/e-renaissance-frontend/refs/heads/main/src/assets/hero1.png',
       createdAt: new Date('2025-04-10'),
       githubUrl: 'https://github.com/AadityaUoHyd/e-renaissance-frontend',
@@ -97,7 +97,7 @@ export default function Projects() {
     {
       _id: '11',
       title: 'AadityaCom',
-      description: 'A Java and Angular based eCommerce platform.',
+      description: 'A Java(SpringBoot) and Angular based eCommerce platform.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/aadityacom/refs/heads/main/aadityacom-screenshot.png',
       createdAt: new Date('2025-03-10'),
       githubUrl: 'https://github.com/AadityaUoHyd/AadityaCom',
@@ -124,7 +124,7 @@ export default function Projects() {
 	{
       _id: '14',
       title: 'ABC-Quizzy',
-      description: 'Play Quizes with AI. It is an AI-powered quiz creation & playing web application. build in FastAPI and React',
+      description: 'Play Quizes with AI. It is an AI-powered quiz creation & playing web application. Build in FastAPI and React',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/abc-quizzy/refs/heads/main/abc-quizzy-screenshot.png',
       createdAt: new Date('2025-05-30'),
       githubUrl: 'https://github.com/AadityaUoHyd/abc-quizzy',

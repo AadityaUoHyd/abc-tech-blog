@@ -25,7 +25,7 @@ export default function Projects() {
     {
       _id: '3',
       title: 'GaanaTree',
-      description: 'Java, PostgreSQL and React based retail shop market billing software. Say, BigBazar, Vishal Mega Mart, or even small shop can use it.',
+      description: 'Java, MongoDB and React based online song streaming platform. User can like, comments on songs, and can listen to albums with respective subscribe type.',
       image: 'https://raw.githubusercontent.com/AadityaUoHyd/gaana-tree/refs/heads/main/screenshots/home.png',
       createdAt: new Date('2025-10-04'),
       githubUrl: 'https://github.com/AadityaUoHyd/gaana-tree',
